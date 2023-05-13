@@ -1,4 +1,4 @@
-package src.leetCode;
+package src.leetCode.Easy;
 
 /*
 编写一个函数来查找字符串数组中的最长公共前缀。
@@ -12,7 +12,7 @@ package src.leetCode;
  */
 public class LeetCode_014 {
     public static void main(String[] args) {
-        String[] str = {"dog","racecar","car"};
+        String[] str = {"rog","racecar","rar"};
         String s = longestCommonPrefix(str);
         System.out.print(s);
     }

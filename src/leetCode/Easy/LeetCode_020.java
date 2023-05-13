@@ -1,4 +1,4 @@
-package src.leetCode;
+package src.leetCode.Easy;
 /*
 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
 

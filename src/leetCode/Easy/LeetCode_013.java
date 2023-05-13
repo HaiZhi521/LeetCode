@@ -1,4 +1,4 @@
-package src.leetCode;
+package src.leetCode.Easy;
 //罗马数字包含以下七种字符:I，V，X，L，C，D和M。
 //
 //        字符          数值
@@ -20,38 +20,38 @@ package src.leetCode;
 
 public class LeetCode_013 {
     public static int romanToInt(String s) {
-        int num = 0;
+        int sum = 0;
+        int numKey = getNum(s.charAt(0));
 
-        char [] stringArr = s.toCharArray();
-        System.out.println(stringArr.length);
-        for(int i = 0;i < stringArr.length;i++ ){
+        for(int i = 1;i < s.length();i++ ){
             //System.out.println(stringArr[i]);
-            String str = "IVXLCDM";
-            System.out.println(str.substring(1,2));
-            System.out.println(s.substring(0,1).compareTo(str.substring(1,2)));
-            if(str.substring(0,1) == s.substring(i,i+1)){
-                num += 1;
-                System.out.println(num);
-            }else if (str.substring(1,2) == s.substring(i,i+1)){
-                num += 5;
-            }else if(str.substring(2,3) == s.substring(i,i+1)){
-                num += 10;
-            }else if(str.substring(3,4) == s.substring(i,i+1)){
-                num += 50;
-            }else if (str.substring(4,5) == s.substring(i,i+1)){
-                num +=100;
-            }else if (str.substring(5,6) == s.substring(i,i+1)){
-                num += 500;
-            }else if (str.substring(6,7) == s.substring(i,i+1)){
-                num +=1000;
+            int num = getNum(s.charAt(i));
+            if (numKey < num){
+                sum = sum - numKey;
+            }else {
+                sum = sum + numKey;
             }
+            numKey = num;
         }
+        sum += numKey;
+        return sum;
+    }
 
-        return num;
+    public static int getNum(char c){
+        switch (c){
+            case 'I':return 1;
+            case 'V':return 5;
+            case 'X':return 10;
+            case 'L':return 50;
+            case 'C':return 100;
+            case 'D':return 500;
+            case 'M':return 1000;
+            default:return 0;
+        }
     }
 
     public static void main(String[] args) {
-        String str = "VII";
+        String str = "MCMXCIV";
         int num = romanToInt(str);
         System.out.println(num);
     }
