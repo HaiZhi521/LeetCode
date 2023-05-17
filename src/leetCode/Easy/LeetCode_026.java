@@ -1,4 +1,4 @@
-package src.leetCode;
+package src.leetCode.Easy;
 
 /*
 给你一个 升序排列 的数组 nums ，请你 原地 删除重复出现的元素，使每个元素 只出现一次 ，
@@ -14,22 +14,31 @@ package src.leetCode;
  */
 public class LeetCode_026 {
     public static void main(String[] args) {
-        int[] nums = {1,1,2}; // 输入数组
-        int[] expectedNums = new int[0]; // 长度正确的期望答案
+        int[] nums = {1,1,2,2,3}; // 输入数组
+        //int[] expectedNums = new int[0]; // 长度正确的期望答案
 
-        int k = removeDuplicates(nums); // 调用
-
-        assert k == expectedNums.length;
-        for (int i = 0; i < k; i++) {
-            assert nums[i] == expectedNums[i];
-        }
+        int length = removeDuplicates(nums); // 调用
+        System.out.println(length);
 
     }
 
     public static int removeDuplicates(int[] nums) {
-
-
-        return nums[4];
+        int length = nums.length;
+        int fast = 1;
+        int slow = 0;
+        while (fast < length){
+            if (nums[slow] == nums[fast]){
+                fast = fast + 1;
+            }else if (fast == length){
+                nums[slow+1] = nums[fast];
+                slow = slow + 1;
+            }else {
+                nums[slow+1] = nums[fast];
+                slow = slow + 1;
+                fast = fast + 1;
+            }
+        }
+        return slow + 1;
 
     }
 }
